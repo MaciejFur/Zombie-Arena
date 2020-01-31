@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class WaterWaves : MonoBehaviour
 {
-    public float scale = 0.1f;
-    public float speed = 1f;
-    public float noiseStrength = 1f;
-    public float noiseWalk = 1f;
+    public float scale = 1f;
+    public float speed = 2f;
+    public float noiseStrength = 2f;
+    public float noiseWalk = 2f;
 
     
 
@@ -35,6 +35,7 @@ public class WaterWaves : MonoBehaviour
 
             vertices[i] = vertex;
         }
-        //mesh.vertices = ve
+        mesh.vertices = vertices;
+        mesh.RecalculateNormals();
     }
 }

@@ -7,6 +7,11 @@ public class MouseLook : MonoBehaviour
     public float mouseSensitivity = 100f;
     public Transform playerBody;
     float xRotation = 0f;
+
+    Camera cam;
+
+    
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -23,6 +28,22 @@ public class MouseLook : MonoBehaviour
         
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
+
+        if(Input.GetKeyUp("e"))
+        {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+
+            if(Physics.Raycast(ray, out hit, 100))
+            {
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+                if (interactable != null)
+                {
+                    
+                }
+            }
+        }
 
         if(Input.GetKey(KeyCode.L))
         {
