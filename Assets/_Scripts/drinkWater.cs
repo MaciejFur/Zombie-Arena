@@ -29,10 +29,9 @@ public class drinkWater : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("bang");
             if (wasser > 50f)
             {
-                WaterVase.water = 0;
+                wasser= 0;
             }
         }
     }

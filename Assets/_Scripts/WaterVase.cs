@@ -17,6 +17,7 @@ public class WaterVase : MonoBehaviour
     void Update()
     {
         water = drinkWater.wasser;
+        
         if (water < 100f)
         {
             if (water < 50)
