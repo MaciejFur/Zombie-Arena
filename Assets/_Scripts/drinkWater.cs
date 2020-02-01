@@ -5,11 +5,11 @@ using UnityEngine;
 public class drinkWater : MonoBehaviour
 {
     // Start is called before the first frame update
-    public static float wasser;
+    public static float wasser = 50f;
 
     private void Awake()
     {
-        wasser = WaterVase.water;
+        
     }
     void Update()
         {
@@ -33,6 +33,7 @@ public class drinkWater : MonoBehaviour
             {
                 wasser= 0;
             }
+            Debug.Log(wasser);
         }
     }
 }

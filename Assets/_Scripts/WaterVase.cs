@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class WaterVase : MonoBehaviour
 {
-    public Transform player;
     public Transform sphereWater;
-    public static float water = 50;
+    public static float water;
     // Start is called before the first frame update
     void Awake()
     {
