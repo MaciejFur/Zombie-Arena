@@ -83,7 +83,7 @@ public class HandgunScriptLPFP : MonoBehaviour {
 	public SkinnedMeshRenderer bulletInMagRenderer;
 
 	[Header("Grenade Settings")]
-	public float grenadeSpawnDelay = 0.35f;
+	public float grenadeSpawnDelay = 3.5f;
 
 	[Header("Muzzleflash Settings")]
 	public bool randomMuzzleflash = false;
