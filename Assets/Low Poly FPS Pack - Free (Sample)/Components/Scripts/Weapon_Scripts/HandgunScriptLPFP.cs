@@ -241,7 +241,7 @@ public class HandgunScriptLPFP : MonoBehaviour {
 
 		//Timescale settings
 		//Change timescale to normal when 1 key is pressed
-		if (Input.GetKeyDown (KeyCode.Alpha1)) 
+		/*if (Input.GetKeyDown (KeyCode.Alpha1)) 
 		{
 			Time.timeScale = 1.0f;
 			timescaleText.text = "1.0";
@@ -269,7 +269,7 @@ public class HandgunScriptLPFP : MonoBehaviour {
 		{
 			Time.timeScale = 0.0f;
 			timescaleText.text = "0.0";
-		}
+		}*/
 
 		//Set current ammo text from ammo int
 		currentAmmoText.text = currentAmmo.ToString ();
@@ -406,7 +406,7 @@ public class HandgunScriptLPFP : MonoBehaviour {
 		}
 
 		//Toggle weapon holster when pressing E key
-		if (Input.GetKeyDown (KeyCode.E) && !hasBeenHolstered) 
+		if (Input.GetKeyDown (KeyCode.H) && !hasBeenHolstered) 
 		{
 			holstered = true;
 
@@ -415,7 +415,7 @@ public class HandgunScriptLPFP : MonoBehaviour {
 
 			hasBeenHolstered = true;
 		} 
-		else if (Input.GetKeyDown (KeyCode.E) && hasBeenHolstered) 
+		else if (Input.GetKeyDown (KeyCode.H) && hasBeenHolstered) 
 		{
 			holstered = false;
 

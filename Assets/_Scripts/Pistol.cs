@@ -37,7 +37,8 @@ public class Pistol : MonoBehaviour
             if (target != null)
             {
                 target.TakeDamage(damage);
-                GameObject impactEnemy = Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                GameObject impactEnemy = Instantiate(bloodEffect, hit.point,
+                    Quaternion.LookRotation(hit.normal));
                 Destroy(impactEnemy, 2f);
             }
 
@@ -48,7 +49,8 @@ public class Pistol : MonoBehaviour
 
             if (hit.transform.gameObject.layer == impactMask)
             {
-                GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                GameObject impactGO = Instantiate(impactEffect, hit.point,
+                    Quaternion.LookRotation(hit.normal));
                 Destroy(impactGO, 2f);
                 Debug.Log("Ok");
             }
