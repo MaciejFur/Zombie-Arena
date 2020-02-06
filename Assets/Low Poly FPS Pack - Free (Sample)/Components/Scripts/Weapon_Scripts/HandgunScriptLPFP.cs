@@ -83,7 +83,7 @@ public class HandgunScriptLPFP : MonoBehaviour {
 	public SkinnedMeshRenderer bulletInMagRenderer;
 
 	[Header("Grenade Settings")]
-	public float grenadeSpawnDelay = 3.5f;
+	public float grenadeSpawnDelay = 35f;
 
 	[Header("Muzzleflash Settings")]
 	public bool randomMuzzleflash = false;
@@ -293,8 +293,9 @@ public class HandgunScriptLPFP : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.G) && !isInspecting) 
 		{
 			StartCoroutine (GrenadeSpawnDelay ());
-			//Play grenade throw animation
-			anim.Play("GrenadeThrow", 0, 0.0f);
+            //Play grenade throw animation
+			anim.Play("GrenadeThrow", 0, .0f);
+
 		}
 
 		//If out of ammo
