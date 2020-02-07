@@ -17,16 +17,16 @@ public class AIMovement : MonoBehaviour
     }
     void Update ()
     {
-        Ray ray = new Ray(transform.position, -transform.up);
+        Ray ray = new Ray(transform.position + new Vector3(0f,2.2f,0f), transform.forward);
         RaycastHit hitInfo;
 
-        if (Physics.Raycast(ray, out hitInfo, 100, mask))
+        if (!Physics.Raycast(ray, out hitInfo, 3, mask))
         {
             Debug.DrawLine(ray.origin, hitInfo.point, Color.red);
             t.position += t.forward * speed * Time.deltaTime;
 
         }
-        else if (!Physics.Raycast(ray, out hitInfo, 100, mask))
+        else if (Physics.Raycast(ray, out hitInfo, 3, mask))
         {
             
             Debug.DrawLine(ray.origin, ray.origin + ray.direction * 100, Color.green);
