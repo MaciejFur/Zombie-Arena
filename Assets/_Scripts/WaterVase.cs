@@ -16,7 +16,8 @@ public class WaterVase : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        water = 50f;
+        water = 90f;
+
     }
 
     // Update is called once per frame
@@ -27,7 +28,17 @@ public class WaterVase : MonoBehaviour
             if (water > 50f)
             {
                 drinking.Play(0);
+                if (water > 99f)
+                {
+                    PlayerHealth.playerHealth = 100;
+                }
+                else if (water > 50f)
+                {
+                    PlayerHealth.playerHealth += 50;
+                }
                 this.water = 0;
+                
+
 
             }
 

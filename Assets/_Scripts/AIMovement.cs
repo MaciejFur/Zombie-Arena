@@ -32,7 +32,7 @@ public class AIMovement : MonoBehaviour
         if (Physics.Raycast(ray, out hitInfo, 100, mask))
         {
             Debug.DrawLine(ray.origin, hitInfo.point, Color.red);
-            if (isWalking == true)
+            if (isWalking == true || isRunning == true)
                 t.position += t.forward * speed * Time.deltaTime;
 
         }
@@ -86,10 +86,6 @@ public class AIMovement : MonoBehaviour
             chicken.SetBool("Walk", false);
         }
     }
-    void OnTriggerEnter(Collider other)
-    {
-        
-    }
     private void OnCollisionEnter(Collision col)
     {
         
@@ -98,9 +94,9 @@ public class AIMovement : MonoBehaviour
             isRunning = true;
             isWalking = false;
         }
-        if (col.gameObject.CompareTag("Building") && isRunning == false)
+        /*if (col.gameObject.CompareTag("Building") && isRunning == false)
         {
             t.Rotate(0, Random.Range(90f, 270f), 0);
-        }
+        }*/
     }
 }

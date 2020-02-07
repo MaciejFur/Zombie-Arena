@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int playerHealth;
+    public Text playerHp;
+    public static int playerHealth;
+    public AudioSource pain;
+    public Collider col;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +18,8 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerHealth < 1)
+        playerHp.text = playerHealth.ToString();
+        if (playerHealth < 1)
         {
             PlayerDead();
         }
@@ -27,7 +32,10 @@ public class PlayerHealth : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Enemy"))
         {
-            playerHealth -= 10;
+            playerHealth -= 5;
+            
+            pain.pitch = Random.Range(.8f, 5f);
+            pain.Play(0);
         }
     }
 }
