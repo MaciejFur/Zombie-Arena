@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Target
+  - Weapon
+  - Building
+  - Grenade
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -17,9 +22,9 @@ TagManager:
   - Enemy
   - Destructable
   - Ground
-  - 
-  - 
-  - 
+  - Sky
+  - Building
+  - Weapon
   - 
   - 
   - 

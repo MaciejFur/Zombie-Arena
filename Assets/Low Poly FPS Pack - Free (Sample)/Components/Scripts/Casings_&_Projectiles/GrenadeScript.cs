@@ -3,8 +3,10 @@ using System.Collections;
 
 // ----- Low Poly FPS Pack Free Version -----
 public class GrenadeScript : MonoBehaviour {
+    [Header("Timer")]
+    public int damage;
 
-	[Header("Timer")]
+    [Header("Timer")]
 	//Time before the grenade explodes
 	[Tooltip("Time before the grenade explodes")]
 	public float grenadeTimer = 5.0f;
@@ -81,9 +83,9 @@ public class GrenadeScript : MonoBehaviour {
 		Collider[] colliders = Physics.OverlapSphere(explosionPos, radius);
 		foreach (Collider hit in colliders) {
 			Rigidbody rb = hit.GetComponent<Rigidbody> ();
-
-			//Add force to nearby rigidbodies
-			if (rb != null)
+            
+            //Add force to nearby rigidbodies
+            if (rb != null)
 				rb.AddExplosionForce (power * 5, explosionPos, radius, 3.0F);
 			
 			//If the explosion hits "Target" tag and isHit is false
@@ -94,10 +96,15 @@ public class GrenadeScript : MonoBehaviour {
 				hit.gameObject.GetComponent<Animation> ().Play("target_down");
 				//Toggle "isHit" on target object
 				hit.gameObject.GetComponent<TargetScript>().isHit = true;
-			}
+            }
+            if (hit.GetComponent<Collider>().tag == "Enemy"
+                    && hit.gameObject.GetComponent<Enemy>().isHit == false)
+            {
+                hit.gameObject.GetComponent<Enemy>().isHit = true;
+            }
 
-			//If the explosion hits "ExplosiveBarrel" tag
-			if (hit.GetComponent<Collider>().tag == "ExplosiveBarrel") 
+            //If the explosion hits "ExplosiveBarrel" tag
+            if (hit.GetComponent<Collider>().tag == "ExplosiveBarrel") 
 			{
 				//Toggle "explode" on explosive barrel object
 				hit.gameObject.GetComponent<ExplosiveBarrelScript> ().explode = true;

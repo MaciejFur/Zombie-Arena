@@ -5,8 +5,18 @@ using UnityEngine.UI;
 // ----- Low Poly FPS Pack Free Version -----
 public class HandgunScriptLPFP : MonoBehaviour {
 
-	//Animator component attached to weapon
-	Animator anim;
+    //MY VARIABLES
+    [Header("MY SCRIPTS")]
+    public Camera fpsCam;
+    public LayerMask impactMask;
+    Enemy target;
+
+    public Text currentHealt;
+    public Text healthDivider;
+    public Text totalHealth;
+
+    //Animator component attached to weapon
+    Animator anim;
 
 	[Header("Gun Camera")]
 	//Main gun camera
@@ -202,6 +212,7 @@ public class HandgunScriptLPFP : MonoBehaviour {
 	
 	private void Update () {
 
+
 		//Aiming
 		//Toggle camera FOV when right click is held down
 		if(Input.GetButton("Fire2") && !isReloading && !isRunning && !isInspecting) 
@@ -325,11 +336,35 @@ public class HandgunScriptLPFP : MonoBehaviour {
 			//anim.SetBool ("Out Of Ammo", false);
 			anim.SetLayerWeight (1, 0.0f);
 		}
+        //Custom Script
+        RaycastHit hit;
 
-		//Shooting 
-		if (Input.GetMouseButtonDown (0) && !outOfAmmo && !isReloading && !isInspecting && !isRunning) 
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 100f))
+        {
+            target = hit.transform.GetComponent<Enemy>();
+        }
+        if (target != null)
+        {
+            currentHealt.text = target.health.ToString();
+            healthDivider.text = "/";
+            totalHealth.text = target.totalHealth.ToString();
+        }
+        if (target == null)
+        {
+            currentHealt.text = "";
+            healthDivider.text = "";
+            totalHealth.text = "";
+        }
+        // Assest Script
+        //Shooting 
+        if (Input.GetMouseButtonDown (0) && !outOfAmmo && !isReloading && !isInspecting && !isRunning) 
 		{
-			anim.Play ("Fire", 0, 0f);
+            
+            
+
+            
+            anim.Play("Fire", 0, 0f);
+            
 	
 			muzzleParticles.Emit (1);
 				
@@ -405,7 +440,7 @@ public class HandgunScriptLPFP : MonoBehaviour {
 			anim.SetTrigger ("Inspect");
 		}
 
-		//Toggle weapon holster when pressing E key
+		//Toggle weapon holster when pressing H key
 		if (Input.GetKeyDown (KeyCode.H) && !hasBeenHolstered) 
 		{
 			holstered = true;
