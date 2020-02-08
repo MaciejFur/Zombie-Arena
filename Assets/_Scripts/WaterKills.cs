@@ -5,10 +5,10 @@ using UnityEngine;
 public class WaterKills : MonoBehaviour
 {
     public AudioSource waterSplash;
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         waterSplash.pitch = Random.Range(.9f, 3f);
-        waterSplash.Play();
+        waterSplash.Play(0);
         if(other.gameObject.CompareTag("Player") ||
             other.gameObject.CompareTag("Enemy")||
             other.gameObject.CompareTag("Target"))
@@ -17,4 +17,5 @@ public class WaterKills : MonoBehaviour
         }
 
     }
+    
 }

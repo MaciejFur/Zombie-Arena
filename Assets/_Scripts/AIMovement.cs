@@ -11,6 +11,7 @@ public class AIMovement : MonoBehaviour
 
     public Transform target;
     public Transform t;
+    public GameObject player;
     public float speed = 1.5f;
 
     // Animator variables
@@ -25,6 +26,11 @@ public class AIMovement : MonoBehaviour
     }
     void Update ()
     {
+        if (player == null)
+        {
+            player = GameObject.Find("Handgun_01_FPSController");
+            target = player.GetComponent<Transform>();
+        }
         t.LookAt(target);
         AnimationControl();
         Ray ray = new Ray(transform.position, -transform.up);

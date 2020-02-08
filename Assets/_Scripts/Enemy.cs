@@ -8,10 +8,13 @@ public class Enemy : MonoBehaviour
     public int health;
 
     public ParticleSystem bloodSplash;
-    public ParticleSystem deathScene;
+    //public ParticleSystem deathScene;
 
     private int dmgTaken;
     private float critChance;
+
+    public AudioSource chickenDead;
+    public Transform stage;
 
     //Grenade damage received
     public bool isHit = false;
@@ -24,7 +27,7 @@ public class Enemy : MonoBehaviour
     {
         if (isHit == true)
         {
-            Debug.Log("AAAAAAAAAAAAAA");
+            
             dmgTaken = Random.Range(150, 300);
             TakeDamage(dmgTaken);
             isHit = false;
@@ -49,16 +52,20 @@ public class Enemy : MonoBehaviour
     {
         health -= dmgTaken;
         bloodSplash.Play();
-        Debug.Log((dmgTaken < 12 ? " " : "CRITICAL ") + dmgTaken + " OF " + health);
+        //Debug.Log((dmgTaken < 12 ? " " : "CRITICAL ") + dmgTaken + " OF " + health);
         if (health <= 0f)
         {
+            chickenDead.pitch = Random.Range(.7f, 3f);
+            chickenDead.Play(0);
+            stage.GetComponent<AIMovement>().isRunning = false;
+            stage.GetComponent<AIMovement>().isWalking = false;
             Die();
         }
     }
     void Die()
     {
-
-        Destroy(gameObject);
+        
+        Destroy(gameObject,1);
     }
 
 }

@@ -10,6 +10,8 @@ public class HandgunScriptLPFP : MonoBehaviour {
     public Camera fpsCam;
     public LayerMask impactMask;
     Enemy target;
+    WaterVase vase;
+    CloseWindow window;
 
     public Text currentHealt;
     public Text healthDivider;
@@ -339,10 +341,16 @@ public class HandgunScriptLPFP : MonoBehaviour {
         //Custom Script
         RaycastHit hit;
 
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 100f))
+        if (Physics.Raycast(fpsCam.transform.position,
+            fpsCam.transform.forward, out hit, 100f))
         {
             target = hit.transform.GetComponent<Enemy>();
         }
+        /*if (Physics.Raycast(fpsCam.transform.position,
+            fpsCam.transform.forward, out hit, 3f))
+        {
+            vase = hit.transform.GetComponent<WaterVase>();
+        }*/
         if (target != null)
         {
             currentHealt.text = target.health.ToString();
@@ -355,6 +363,7 @@ public class HandgunScriptLPFP : MonoBehaviour {
             healthDivider.text = "";
             totalHealth.text = "";
         }
+
         // Assest Script
         //Shooting 
         if (Input.GetMouseButtonDown (0) && !outOfAmmo && !isReloading && !isInspecting && !isRunning) 
