@@ -15,13 +15,13 @@ public class ToogleLightBillboard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        number = Random.Range(1, 100);
+        number = Random.Range(1, 500);
         LightsOn();
 
     }
     void LightsOn ()
     {
-        if(number < 10)
+        if(number < 6)
         {
             myLight.enabled = !myLight.enabled;
         }
