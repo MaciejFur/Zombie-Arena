@@ -34,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
         {
             playerHealth -= 5;
             
-            pain.pitch = Random.Range(.8f, 2f);
+            pain.pitch = (playerHealth/100f)+0.3f;
             pain.Play(0);
         }
     }
